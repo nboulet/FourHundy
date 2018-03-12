@@ -1,7 +1,7 @@
 #include <Wire.h>
 //int pin = ;
-//int bytes = ;
-int reading = 0;
+int byteAvailable = 0;
+byte reading = 0;
 int dev = 39;  //0x27 = 39, default address of sensor 
 //notes on HIH800 operation 
 //write = 0
@@ -25,8 +25,10 @@ void loop() {
   delay(40); // wait for readings to occur, data sheet says will be 36.65 ms
   //read first byte  
   Wire.requestFrom(dev,1);
-
-  if( 1 <= Wire.available() ) {
+  byteAvailable = Wire.available();
+  Serial.println("Bytes available:");
+  Serial.println(byteAvailable);
+  if(byteAvailable<=1 ) {
     reading = Wire.read();
   }
   Serial.println("Reading is");
