@@ -75,6 +75,7 @@ SOFT_RESTART:
     Serial.write((byte *)&humidity,sizeof(humidity));
     Serial.print("\n");
     Serial.write((byte *)&pressure,sizeof(pressure));
+    Serial.print("\n");
   }
 
   //Check the status of the data: 00 valid, 01 stale, 1X reset as somethings wrong
